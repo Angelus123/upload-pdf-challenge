@@ -19,7 +19,7 @@ function FileUpload() {
     const uploadFile = () => {
         const formData = new FormData();
         formData.append('file', file); // appending file
-        axios.post('http://localhost:3001upload', formData, {
+        axios.post('http://localhost:4500/upload', formData, {
             onUploadProgress: (ProgressEvent) => {
                 let progress = Math.round(
                 ProgressEvent.loaded / ProgressEvent.total * 100) + '%';
@@ -28,7 +28,7 @@ function FileUpload() {
         }).then(res => {
             console.log(res);
             getFile({ name: res.data.name,
-                     path: 'http://localhost:3001' + res.data.path
+                     path: 'http://localhost:4500' + res.data.path
                    })
         }).catch(err => console.log(err))}
 
